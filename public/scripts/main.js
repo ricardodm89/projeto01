@@ -1,17 +1,16 @@
-import axios from 'axios';
 
 
-class Api {
-    static async getUserLogin(){
-        try {
-            const response = await axios.get(`https://reqres.in/api/login`);
-            console.log(response);
-        } catch (error) {
-            console.warn("Erro na API");
-        }
-        
-    }
+const options = {
+    method: 'GET',
+    mode: 'cors',
+    cacahe: 'default'
 }
 
+fetch(`https://reqres.in/api/login`, options)
+    .then(response =>{response.json()
+        .then(data => console.log(data))
+    })
+    .catch(erro => console.log ('Erro: ' + erro))
 
-Api.getUserLogin();
+
+
